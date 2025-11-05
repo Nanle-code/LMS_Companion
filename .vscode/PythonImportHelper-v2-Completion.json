@@ -1,0 +1,65 @@
+[
+    {
+        "label": "gradio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gradio",
+        "description": "gradio",
+        "detail": "gradio",
+        "documentation": {}
+    },
+    {
+        "label": "get_flashcard_html",
+        "kind": 2,
+        "importPath": "flash",
+        "description": "flash",
+        "peekOfCode": "def get_flashcard_html(index=0):\n    card = flashcards[index % len(flashcards)]\n    html = f\"\"\"\n    <style>\n    .flashcard-container {{\n        perspective: 1000px;\n        width: 300px;\n        height: 200px;\n        margin: auto;\n        cursor: pointer;",
+        "detail": "flash",
+        "documentation": {}
+    },
+    {
+        "label": "next_card",
+        "kind": 2,
+        "importPath": "flash",
+        "description": "flash",
+        "peekOfCode": "def next_card(current_index):\n    current_index = (current_index + 1) % len(flashcards)\n    return get_flashcard_html(current_index), current_index\nwith gr.Blocks() as demo:\n    with gr.Row():\n        with gr.Column(scale=1):\n            gr.Markdown(\"### 🧠 Animated Flashcards\")\n            html_card = gr.HTML(get_flashcard_html(0))\n            index_state = gr.State(0)\n            next_btn = gr.Button(\"Next ➡️\")",
+        "detail": "flash",
+        "documentation": {}
+    },
+    {
+        "label": "get_flashcard_html",
+        "kind": 2,
+        "importPath": "flash",
+        "description": "flash",
+        "peekOfCode": "def get_flashcard_html(index=0):\n    card = flashcards[index % len(flashcards)]\n    html = f\"\"\"\n    <style>\n    .flashcard-container {{\n        perspective: 1000px;\n        width: 300px;\n        height: 200px;\n        margin: auto;\n        cursor: pointer;",
+        "detail": "flash",
+        "documentation": {}
+    },
+    {
+        "label": "next_card",
+        "kind": 2,
+        "importPath": "flash",
+        "description": "flash",
+        "peekOfCode": "def next_card(current_index):\n    current_index = (current_index + 1) % len(flashcards)\n    return get_flashcard_html(current_index), current_index\nwith gr.Blocks() as demo:\n    with gr.Row():\n        with gr.Column(scale=1):\n            gr.Markdown(\"### 🧠 Animated Flashcards\")\n            html_card = gr.HTML(get_flashcard_html(0))\n            index_state = gr.State(0)\n            next_btn = gr.Button(\"Next ➡️\")",
+        "detail": "flash",
+        "documentation": {}
+    },
+    {
+        "label": "flashcards",
+        "kind": 5,
+        "importPath": "flash",
+        "description": "flash",
+        "peekOfCode": "flashcards = [\n    {\"question\": \"What is the capital of France?\", \"answer\": \"Paris\"},\n]\n# HTML template with CSS animation\ndef get_flashcard_html(index=0):\n    card = flashcards[index % len(flashcards)]\n    html = f\"\"\"\n    <style>\n    .flashcard-container {{\n        perspective: 1000px;",
+        "detail": "flash",
+        "documentation": {}
+    },
+    {
+        "label": "flashcards",
+        "kind": 5,
+        "importPath": "flash",
+        "description": "flash",
+        "peekOfCode": "flashcards = [\n    {\"question\": \"What is the capital of France?\", \"answer\": \"Paris\"},\n    {\"question\": \"Who developed Python?\", \"answer\": \"Guido van Rossum\"},\n    {\"question\": \"What is 5 + 7?\", \"answer\": \"12\"},\n    {\"question\": \"What year did AI boom begin?\", \"answer\": \"Around 2012\"},\n]\n# HTML template with CSS animation\ndef get_flashcard_html(index=0):\n    card = flashcards[index % len(flashcards)]\n    html = f\"\"\"",
+        "detail": "flash",
+        "documentation": {}
+    }
+]
