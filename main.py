@@ -25,11 +25,13 @@ media_dic = {
 
 
 
-openai_api_key = os.getenv('OPENAI_API_KEY')
-if openai_api_key:
-    print(f"OpenAI API Key exists and begins {openai_api_key[:8]}")
-else:
-    print("OpenAI API Key not set")
+# openai_api_key = os.getenv('OPENAI_API_KEY')
+openai_api_key = os.environ.get("OPENAI_API_KEY")
+
+# if openai_api_key:
+#     print(f"OpenAI API Key exists and begins {openai_api_key[:8]}")
+# else:
+#     print("OpenAI API Key not set")
     
 MODEL = "gpt-4.1-mini"
 openai = OpenAI()
@@ -437,5 +439,5 @@ with gr.Blocks() as demo:
     submit_btn.click(fn=process_input, inputs=text_input, outputs=[out1, out2] )
 
 # Launch app
-demo.launch(share=True)
+demo.launch()
 

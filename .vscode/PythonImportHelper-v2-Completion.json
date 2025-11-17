@@ -261,7 +261,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "media_dic = {\n    \"title\": \"Understanding the Ovaries: Functions and Importance\",\n    \"video\": \"https://www.youtube.com/embed/NHECopO6L3g?si=tGshdLoXMUn71xTQ\",\n    \"video_download\": \"ana.mp4\",\n    \"pdf\": \"ana.pdf\"\n}\nopenai_api_key = os.getenv('OPENAI_API_KEY')\nif openai_api_key:\n    print(f\"OpenAI API Key exists and begins {openai_api_key[:8]}\")\nelse:",
+        "peekOfCode": "media_dic = {\n    \"title\": \"Understanding the Ovaries: Functions and Importance\",\n    \"video\": \"https://www.youtube.com/embed/NHECopO6L3g?si=tGshdLoXMUn71xTQ\",\n    \"video_download\": \"ana.mp4\",\n    \"pdf\": \"ana.pdf\"\n}\n# openai_api_key = os.getenv('OPENAI_API_KEY')\nopenai_api_key = os.environ.get(\"OPENAI_API_KEY\")\n# if openai_api_key:\n#     print(f\"OpenAI API Key exists and begins {openai_api_key[:8]}\")",
         "detail": "main",
         "documentation": {}
     },
@@ -270,7 +270,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "openai_api_key = os.getenv('OPENAI_API_KEY')\nif openai_api_key:\n    print(f\"OpenAI API Key exists and begins {openai_api_key[:8]}\")\nelse:\n    print(\"OpenAI API Key not set\")\nMODEL = \"gpt-4.1-mini\"\nopenai = OpenAI()\nsummarize_system_prompt = \"\"\"You are an academic summarizer. \nRead the teacher’s transcribed text carefully and produce a clear, concise, \nand well-structured summary. Focus on the main ideas, learning objectives, ",
+        "peekOfCode": "openai_api_key = os.environ.get(\"OPENAI_API_KEY\")\n# if openai_api_key:\n#     print(f\"OpenAI API Key exists and begins {openai_api_key[:8]}\")\n# else:\n#     print(\"OpenAI API Key not set\")\nMODEL = \"gpt-4.1-mini\"\nopenai = OpenAI()\nsummarize_system_prompt = \"\"\"You are an academic summarizer. \nRead the teacher’s transcribed text carefully and produce a clear, concise, \nand well-structured summary. Focus on the main ideas, learning objectives, ",
         "detail": "main",
         "documentation": {}
     },
