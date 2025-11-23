@@ -22,11 +22,12 @@ typedef struct
 } Student;
 
 // Function definition
-bool is_integer(const char *input);                 // Checks if a string represents a valid integer
-void createStudent(Student **students, int *count); // Adds a new student to the array
-void updateStudent(Student *students, int count);   // Updates an existing student's information
-void deleteStudent(Student **students, int *count); // Deletes a student from the array
-void viewStudents(Student *students, int count);    // Displays all students in the array
+bool is_integer(const char *input);                    // Checks if a string represents a valid integer
+void createStudent(Student **students, int *count);    // Adds a new student to the array
+void updateStudent(Student *students, int count);      // Updates an existing student's information
+void deleteStudent(Student **students, int *count);    // Deletes a student from the array
+void viewStudents(Student *students, int count);       // Displays all students in the array
+void saveStudentsToFile(Student *students, int count); // Saves student data to a file
 
 // Implementation
 int main()
@@ -89,7 +90,8 @@ int main()
         printf("2. Modify Student\n");
         printf("3. Delete Student\n");
         printf("4. Display All Students\n");
-        printf("5. Exit\n");
+        printf("5. Save to File\n");
+        printf("10. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         getchar(); // clear input buffer
@@ -98,17 +100,22 @@ int main()
         {
         case 1:
             createStudent(&students2, &studentCount);
+            viewStudents(students2, studentCount);
             break;
         case 2:
             updateStudent(students2, studentCount);
+            viewStudents(students2, studentCount);
             break;
         case 3:
             deleteStudent(&students2, &studentCount);
+            viewStudents(students2, studentCount);
             break;
         case 4:
             viewStudents(students2, studentCount);
             break;
         case 5:
+            saveStudentsToFile(students2, studentCount);
+        case 10:
             printf("Exiting program...\n");
             free(students2);
             return 0;
@@ -117,7 +124,6 @@ int main()
         }
     }
 
-    
     return 0;
 }
 
@@ -147,7 +153,6 @@ void createStudent(Student **students, int *count)
     (*count)++;
     printf("Student added successfully!\n");
     // viewStudents(*students, *count);
-
 }
 
 /**
@@ -249,6 +254,34 @@ void viewStudents(Student *students, int count)
     }
 }
 
+void saveStudentsToFile(Student *students, int count)
+{
+    char filename[100];
+    printf("Provide a filename e.g (backup.txt, please include the .txt): ");
+    if (fgets(filename, sizeof(filename), stdin) != NULL)
+    {
+        filename[strcspn(filename, "\n")] = '\0';
+        FILE *file = fopen(filename, "w");
+        if (file == NULL)
+        {
+            printf("Error opening file for writing.\n");
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            fprintf(file, "%d,%s,%.2f\n", students[i].rollNumber, students[i].name, students[i].marks);
+        }
+
+        fclose(file);
+        printf("Student data saved to %s successfully.\n", filename);
+    }
+    else
+    {
+        printf("\nError reading input.\n");
+    }
+    return;
+}
+
 bool is_integer(const char *input)
 {
     // Handle potential newline character from fgets
@@ -285,3 +318,16 @@ bool is_integer(const char *input)
 
     return true; // All characters are digits
 }
+
+// char *create_string(const Student students[], int size, int targetId)
+// {
+//     for (int i = 0; i < size; i++)
+//     {
+//         // Compare the target ID with the current student's ID
+//         if (students[i].rollNumber == targetId)
+//         {
+//             return i; // Return the index if a match is found
+//         }
+//     }
+//     return -1; // Return -1 if no match is found after traver
+// }
