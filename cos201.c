@@ -22,12 +22,13 @@ typedef struct
 } Student;
 
 // Function definition
-bool is_integer(const char *input);                    // Checks if a string represents a valid integer
-void createStudent(Student **students, int *count);    // Adds a new student to the array
-void updateStudent(Student *students, int count);      // Updates an existing student's information
-void deleteStudent(Student **students, int *count);    // Deletes a student from the array
-void viewStudents(Student *students, int count);       // Displays all students in the array
-void saveStudentsToFile(Student *students, int count); // Saves student data to a file
+bool is_integer(const char *input);                           // Checks if a string represents a valid integer
+void createStudent(Student **students, int *count);           // Adds a new student to the array
+void updateStudent(Student *students, int count);             // Updates an existing student's information
+void deleteStudent(Student **students, int *count);           // Deletes a student from the array
+void viewStudents(Student *students, int count);              // Displays all students in the array
+void saveStudentsToFile(Student *students, int count);        // Saves student data to a file
+int searchStudent(Student student[], int size, int searchId); // Searches for a student by ID
 
 // Implementation
 int main()
@@ -82,6 +83,10 @@ int main()
     Student *students2 = NULL;
     int studentCount = 0;
     int choice;
+    float average = 0.0;
+    int searchId = 0;
+    int result = 0;
+    float total = 0;
 
     while (1)
     {
@@ -91,6 +96,8 @@ int main()
         printf("3. Delete Student\n");
         printf("4. Display All Students\n");
         printf("5. Save to File\n");
+        printf("6. Search Student by ID\n");
+        printf("7. Calculate Average Score\n");
         printf("10. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -115,6 +122,37 @@ int main()
             break;
         case 5:
             saveStudentsToFile(students2, studentCount);
+            break;
+
+        case 6:
+
+            printf("Enter Student ID to search: ");
+            scanf("%d", &searchId);
+            result = searchStudent(students2, studentCount, searchId);
+            if (result == -1)
+            {
+                printf("Student not found.\n");
+            }
+            else
+            {
+                result;
+            }
+            break;
+
+        case 7:
+            // Average Score
+
+            for (int i = 0; i < studentCount; i++)
+            {
+                
+                total += students2[i].marks;
+                
+                average = total / studentCount;
+            }
+            printf("Total score is: %.2f\n", total);
+            printf("The average score is: %.2f\n", average);
+            break;
+
         case 10:
             printf("Exiting program...\n");
             free(students2);
@@ -331,3 +369,21 @@ bool is_integer(const char *input)
 //     }
 //     return -1; // Return -1 if no match is found after traver
 // }
+
+int searchStudent(Student *student, int size, int searchId)
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (student[i].rollNumber == searchId)
+        { // Compare the 'rollNumber' field
+            printf("Product found at index %d: Roll Number=%d, Name=%s, Marks=%.2f\n",
+                   i,
+                   student[i].rollNumber,
+                   student[i].name,
+                   student[i].marks);
+
+            return 1;
+        }
+    }
+    return -1; // Return -1 if not found
+}
