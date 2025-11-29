@@ -133,10 +133,7 @@ int main()
             {
                 printf("Student not found.\n");
             }
-            else
-            {
-                result;
-            }
+            
             break;
 
         case 7:
