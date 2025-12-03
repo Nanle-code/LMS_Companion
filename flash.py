@@ -1,6 +1,6 @@
 import gradio as gr
 
-# Sample flashcards
+# Sample flashcards 
 flashcards = [
     {"question": "What is the capital of France?", "answer": "Paris"},
     

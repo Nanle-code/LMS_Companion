@@ -132,16 +132,16 @@ data_sample <- data[sample(nrow(iris)), ]
 
 # Separate the features (input) and the target variable (species)
 # The first 4 columns are features, the 5th is the species
-featues_x <- data_sample[, 1:4]
+features_x <- data_sample[, 1:4]
 label_y <- data_sample[, 5]
 
 
 # Determine the split point (e.g., 70% for training)
 train_size <- floor(0.7 * nrow(data_sample))
-x_train <- feature_x[1:train_size, ]
-x_test <- feature_x[(train_size + 1):nrow(feature_x), ]
+x_train <- features_x[1:train_size, ]
+x_test <- features_x[(train_size + 1):nrow(features_x), ]
 y_train <- label_y[1:train_size]
-y_test <- label_y[(train_size + 1):nrow(label_y)]
+y_test <- label_y[(train_size + 1):length(label_y)]
 
 
 # Choose a value for k (e.g., 7)

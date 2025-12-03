@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
+// #include <math.h>
 
 const int PASS_THRESHOLD = 40;
 const int MAX_NAME = 100;
@@ -28,7 +29,8 @@ void updateStudent(Student *students, int count);             // Updates an exis
 void deleteStudent(Student **students, int *count);           // Deletes a student from the array
 void viewStudents(Student *students, int count);              // Displays all students in the array
 void saveStudentsToFile(Student *students, int count);        // Saves student data to a file
-int searchStudent(Student student[], int size, int searchId); // Searches for a student by ID
+int searchStudent(Student student[], int size, int searchId);
+// int pot (Student student); // Searches for a student by ID
 
 // Implementation
 int main()
@@ -38,7 +40,7 @@ int main()
     Student student1;
 
     printf("========================================\n");
-    printf("    Welcome to the Greeting Program!    \n");
+    printf("    Welcome to the Student portal!    \n");
     printf("========================================\n\n");
 
     printf("Please enter your name: ");
